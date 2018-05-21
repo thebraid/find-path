@@ -7,7 +7,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import logger from 'redux-logger'
 
 import reducer from './reducers'
-import App from './App';
+import App from './components/App';
 
 const middleware = [thunk, logger];
 
@@ -19,5 +19,5 @@ render(
     <Provider store={store}>
         <App/>
     </Provider>,
-    document.getElementById('app')
+    document.getElementById('root')
 );
