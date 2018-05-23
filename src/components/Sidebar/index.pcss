@@ -1,0 +1,25 @@
+.sidebar {
+  display: flex;
+  min-width: 250px;
+  box-sizing: border-box;
+  flex: 0 1 300px;
+  flex-flow: column;
+  justify-content: space-between;
+  padding: 10px 10px 100px;
+  border-left: rgba(0, 0, 0, 0.2) 1px solid;
+
+  &__actions {
+    .button {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__common-actions {
+    padding-bottom: 20px;
+    border-bottom: rgba(0, 0, 0, 0.2) 1px solid;
+  }
+
+  &__cell-actions {
+    margin-top: 30px;
+  }
+}

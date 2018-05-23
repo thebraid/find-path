@@ -1,0 +1,39 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: rgba(0, 0, 0, 0.2) 1px solid;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 32px;
+  transition: background-color 0.3s, border-color 0.3s;
+  user-select: none;
+
+  &:hover {
+    border-color: rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    background-color: #f3f1ed;
+  }
+
+  &_disabled {
+    border: none;
+    background-color: #e9ecef;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  &_highlight {
+    border: none;
+    background-color: var(--cell-color);
+
+    &:hover {
+      background-color: var(--cell-color-hover);
+    }
+
+    &:active {
+      background-color: var(--cell-color-active);
+    }
+  }
+}

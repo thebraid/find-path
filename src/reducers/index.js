@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 
 
+import map from './map'
 import test from './test'
 
 
 const rootReducer = combineReducers({
-    test,
+    map,
+    test
 });
 
 export default rootReducer

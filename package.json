@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack -d",
     "dev": "webpack-dev-server --mode development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint:pcss": "stylelint ./src/**/*.pcss",
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   "dependencies": {
     "@babel/core": "^7.0.0-beta.47",
     "@babel/preset-env": "^7.0.0-beta.47",
+    "@babel/preset-stage-0": "^7.0.0-beta.47",
     "babel-loader": "^8.0.0-beta.3",
     "normalize.css": "^8.0.0",
     "react": "^16.3.2",
@@ -29,13 +31,20 @@
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "stylelint": "^9.2.1",
+    "stylelint-config-idiomatic-order": "^5.0.0"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.0.0-beta.47",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "css-loader": "^0.28.11",
     "html-webpack-plugin": "^3.2.0",
+    "postcss-color-function": "^4.0.1",
+    "postcss-custom-properties": "^7.0.0",
     "postcss-loader": "^2.1.5",
+    "postcss-nested": "^3.0.0",
+    "postcss-nesting": "^5.0.0",
     "redux-devtools-extension": "^2.13.2",
     "style-loader": "^0.21.0",
     "webpack": "^4.8.3",

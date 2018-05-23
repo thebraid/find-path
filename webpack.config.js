@@ -9,6 +9,16 @@ module.exports = {
         filename: 'bundle.js'
     },
 
+    resolve: {
+        alias: {
+            Actions: path.resolve(__dirname, 'src/actions'),
+            Components: path.resolve(__dirname, 'src/components'),
+            Constants: path.resolve(__dirname, 'src/constants'),
+            Tools: path.resolve(__dirname, 'src/tools'),
+        },
+        extensions: ['.js', '.jsx'],
+    },
+
     devtool: 'source-map',
 
     module: {
@@ -21,7 +31,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
+                test: /\.(css|pcss)$/,
                 use: [
                     { loader: "style-loader" },
                     {
