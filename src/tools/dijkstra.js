@@ -1,12 +1,24 @@
+const getDistance = (node) => {
+    if (node === null) return Infinity;
 
+    if(Array.isArray(node)) {
+        let sum = 0;
 
-export const findPath = (dependencies, start) => {
+        node.forEach(elem => {
+            sum += elem.km;
+        });
+
+        return sum;
+    }
+
+    return node.km;
+};
+
+export const findPath = (dependencies, start, nodes) => {
     const history = Object.create(null);
 
     const recurciveSearch = (nodes) => {
         if (nodes.every(value => value.done)) return;
-
-        const { dependencies, history } = this;
 
         let nextNodes = [];
 
@@ -42,7 +54,7 @@ export const findPath = (dependencies, start) => {
                 } else {
                     // уже есть путь, нужно проверить
                     const oldPath = history[child.to].path;
-                    const oldDistance = this.getDistance(oldPath);
+                    const oldDistance = getDistance(oldPath);
 
                     // расстояние - бесконечность в случае, если мы 1й раз обращаемся у узлу.
                     if(!isFinite(oldDistance)) {
@@ -56,13 +68,13 @@ export const findPath = (dependencies, start) => {
                         // необходимо проверить со старыми данными, и записать наименьшее значение
 
                         // расстояние от предыдущего узла до текущего
-                        const distanceFrom = this.getDistance(history[child.from].path);
+                        const distanceFrom = getDistance(history[child.from].path);
 
                         // расстояние от текущего до заданного
-                        const distanceTo = this.getDistance(child);
+                        const distanceTo = getDistance(child);
 
                         // расстояние от точки начала до следующего узла
-                        const total = this.getDistance(history[child.to].path);
+                        const total = getDistance(history[child.to].path);
 
                         // если до заданного узла найден меньший путь, то оставляем его
                         if (total < (distanceFrom + distanceTo)) return;
@@ -85,8 +97,9 @@ export const findPath = (dependencies, start) => {
         recurciveSearch(nextNodes)
     };
 
-    const nodes = dependencies[start];
+
     recurciveSearch([{start, nodes}]);
+    return history;
 };
 
 

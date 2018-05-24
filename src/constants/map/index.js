@@ -1,5 +1,5 @@
-export const MAP_DEFAULT_WIDTH = 5;
-export const MAP_DEFAULT_HEIGHT = 5;
+export const MAP_DEFAULT_WIDTH = 20;
+export const MAP_DEFAULT_HEIGHT = 20;
 
 export const LINE_DISTANCE = 1;
 export const DIAGONAL_DISTANCE = 1.5;

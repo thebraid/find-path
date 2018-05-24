@@ -9,34 +9,34 @@ export const createDependencies = (grid) => {
 
     for (i = 0; i <= length_H; i += 1) {
         for (j = 0; j <= length_W; j += 1) {
-            const value = grid[i][j];
+            const from = grid[i][j];
 
             // создаем хранилище всех путей из данной точки
-            dep[value] = [];
+            dep[from] = [];
 
             // первый ряд, не заполняем верхние значения6
             if (i === 0) {
                 // крайний левый элемент
                 if (j === 0) {
-                    dep[value].push({to: grid[i][j+1], km: LD});   // справа
-                    dep[value].push({to: grid[i+1][j], km: LD});   // снизу
-                    dep[value].push({to: grid[i+1][j+1], km: DD}); // справа-снизу
+                    dep[from].push({from, to: grid[i][j+1], km: LD});   // справа
+                    dep[from].push({from, to: grid[i+1][j], km: LD});   // снизу
+                    dep[from].push({from, to: grid[i+1][j+1], km: DD}); // справа-снизу
                     continue;
                 }
 
                 // крайний правый элемент
                 if (j === length_W) {
-                    dep[value].push({to: grid[i+1][j], km: LD});   // снизу
-                    dep[value].push({to: grid[i+1][j-1], km: DD}); // слева-снизу
+                    dep[from].push({from, to: grid[i+1][j], km: LD});   // снизу
+                    dep[from].push({from, to: grid[i+1][j-1], km: DD}); // слева-снизу
                     continue;
                 }
 
-                dep[value].push({to: grid[i][j-1], km: LD});   // слева
-                dep[value].push({to: grid[i][j+1], km: LD});   // справа
+                dep[from].push({from, to: grid[i][j-1], km: LD});   // слева
+                dep[from].push({from, to: grid[i][j+1], km: LD});   // справа
 
-                dep[value].push({to: grid[i+1][j-1], km: DD}); // слева-снизу
-                dep[value].push({to: grid[i+1][j], km: LD});   // снизу
-                dep[value].push({to: grid[i+1][j+1], km: DD}); // справа-снизу
+                dep[from].push({from, to: grid[i+1][j-1], km: DD}); // слева-снизу
+                dep[from].push({from, to: grid[i+1][j], km: LD});   // снизу
+                dep[from].push({from, to: grid[i+1][j+1], km: DD}); // справа-снизу
 
                 continue;
             }
@@ -45,59 +45,59 @@ export const createDependencies = (grid) => {
             if (i === length_H) {
                 // крайний левый элемент
                 if (j === 0) {
-                    dep[value].push({to: grid[i-1][j], km: LD});   // сверху
-                    dep[value].push({to: grid[i-1][j+1], km: DD}); // справа-сверху
-                    dep[value].push({to: grid[i][j+1], km: LD});   // справа
+                    dep[from].push({from, to: grid[i-1][j], km: LD});   // сверху
+                    dep[from].push({from, to: grid[i-1][j+1], km: DD}); // справа-сверху
+                    dep[from].push({from, to: grid[i][j+1], km: LD});   // справа
                     continue;
                 }
 
                 // крайний правый элемент
                 if (j === length_W) {
-                    dep[value].push({to: grid[i-1][j-1], km: DD}); // слева-сверху
-                    dep[value].push({to: grid[i-1][j], km: LD});   // сверху
-                    dep[value].push({to: grid[i][j-1], km: LD}); // слева
+                    dep[from].push({from, to: grid[i-1][j-1], km: DD}); // слева-сверху
+                    dep[from].push({from, to: grid[i-1][j], km: LD});   // сверху
+                    dep[from].push({from, to: grid[i][j-1], km: LD}); // слева
                     continue;
                 }
 
-                dep[value].push({to: grid[i-1][j-1], km: DD}); // слева-сверху
-                dep[value].push({to: grid[i-1][j], km: LD});   // сверху
-                dep[value].push({to: grid[i-1][j+1], km: DD}); // справа-сверху
+                dep[from].push({from, to: grid[i-1][j-1], km: DD}); // слева-сверху
+                dep[from].push({from, to: grid[i-1][j], km: LD});   // сверху
+                dep[from].push({from, to: grid[i-1][j+1], km: DD}); // справа-сверху
 
-                dep[value].push({to: grid[i][j-1], km: LD});   // слева
-                dep[value].push({to: grid[i][j+1], km: LD});   // справа
+                dep[from].push({from, to: grid[i][j-1], km: LD});   // слева
+                dep[from].push({from, to: grid[i][j+1], km: LD});   // справа
                 continue;
             }
 
             // крайний левый элемент
             if (j === 0) {
-                dep[value].push({to: grid[i-1][j], km: LD});   // сверху
-                dep[value].push({to: grid[i-1][j+1], km: DD}); // справа-сверху
-                dep[value].push({to: grid[i][j+1], km: LD});   // справа
-                dep[value].push({to: grid[i+1][j], km: LD});   // снизу
-                dep[value].push({to: grid[i+1][j+1], km: DD}); // справа-снизу
+                dep[from].push({from, to: grid[i-1][j], km: LD});   // сверху
+                dep[from].push({from, to: grid[i-1][j+1], km: DD}); // справа-сверху
+                dep[from].push({from, to: grid[i][j+1], km: LD});   // справа
+                dep[from].push({from, to: grid[i+1][j], km: LD});   // снизу
+                dep[from].push({from, to: grid[i+1][j+1], km: DD}); // справа-снизу
                 continue;
             }
 
             // крайний правый элемент
             if (j === length_W) {
-                dep[value].push({to: grid[i-1][j-1], km: DD}); // слева-сверху
-                dep[value].push({to: grid[i-1][j], km: LD});   // сверху
-                dep[value].push({to: grid[i][j-1], km: LD});   // слева
-                dep[value].push({to: grid[i+1][j-1], km: DD}); // слева-снизу
-                dep[value].push({to: grid[i+1][j], km: LD});   // снизу
+                dep[from].push({from, to: grid[i-1][j-1], km: DD}); // слева-сверху
+                dep[from].push({from, to: grid[i-1][j], km: LD});   // сверху
+                dep[from].push({from, to: grid[i][j-1], km: LD});   // слева
+                dep[from].push({from, to: grid[i+1][j-1], km: DD}); // слева-снизу
+                dep[from].push({from, to: grid[i+1][j], km: LD});   // снизу
                 continue;
             }
 
-            dep[value].push({to: grid[i-1][j-1], km: DD}); // слева-сверху
-            dep[value].push({to: grid[i-1][j], km: LD}); // сверху
-            dep[value].push({to: grid[i-1][j+1], km: DD}); // справа-сверху
+            dep[from].push({from, to: grid[i-1][j-1], km: DD}); // слева-сверху
+            dep[from].push({from, to: grid[i-1][j], km: LD}); // сверху
+            dep[from].push({from, to: grid[i-1][j+1], km: DD}); // справа-сверху
 
-            dep[value].push({to: grid[i][j-1], km: LD});   // слева
-            dep[value].push({to: grid[i][j+1], km: LD});   // справа
+            dep[from].push({from, to: grid[i][j-1], km: LD});   // слева
+            dep[from].push({from, to: grid[i][j+1], km: LD});   // справа
 
-            dep[value].push({to: grid[i+1][j-1], km: DD}); // слева-снизу
-            dep[value].push({to: grid[i+1][j], km: LD});   // снизу
-            dep[value].push({to: grid[i+1][j+1], km: DD}); // справа-снизу
+            dep[from].push({from, to: grid[i+1][j-1], km: DD}); // слева-снизу
+            dep[from].push({from, to: grid[i+1][j], km: LD});   // снизу
+            dep[from].push({from, to: grid[i+1][j+1], km: DD}); // справа-снизу
         }
     }
 

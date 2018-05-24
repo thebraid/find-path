@@ -17,16 +17,18 @@ import {
     createDependencies,
     createMatrix,
     fillMatrix,
-    // findPath
+    findPath
 } from 'Tools';
 
 const { grid, coords } = createMap(W, H);
 const dependencies = createDependencies(grid);
 
-const countPoints = W * H;
-const matrix = createMatrix(dependencies, countPoints);
-const resultMatrix = fillMatrix(matrix, countPoints);
-//
+const paths = findPath(dependencies, 0, dependencies[0]);
+console.log(paths);
+// const countPoints = W * H;
+// const matrix = createMatrix(dependencies, countPoints);
+// const resultMatrix = fillMatrix(matrix, countPoints);
+
 // console.log(resultMatrix);
 
 const initialState = {
@@ -40,7 +42,7 @@ const initialState = {
     width: W,
     height: H,
     // paths,
-    matrix: resultMatrix,
+    // matrix: resultMatrix,
 };
 
 export default function (state = initialState, action) {

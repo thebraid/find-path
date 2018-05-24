@@ -9,8 +9,6 @@ const getTotalDistance = (elem) => {
 };
 
 export const fillMatrix = (matrix, countPoints) => {
-
-
     const recursiveFill = (count = 0) => {
         // console.log(count);
         const N = countPoints;
