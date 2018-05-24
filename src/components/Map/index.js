@@ -17,7 +17,9 @@ import {
 const mapStateToProps = ({map}) => ({
     grid: map.grid,
     coords: map.coords,
-    selectedSell: map.selectedSell
+    selectedSell: map.selectedSell,
+    start: map.start,
+    end: map.end
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -29,7 +31,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const Map = (props) => {
-    const { grid, coords, selectedSell, actions } = props;
+    const { grid, coords, selectedSell, start, end, actions } = props;
     const { toggleSelectCell, addNewRow, addNewColumn } = actions;
 
     return(
@@ -51,6 +53,8 @@ const Map = (props) => {
                             y={y}
                             isBlocked={coords[cell].blocked}
                             isSelected={selectedSell && selectedSell.x === x && selectedSell.y === y}
+                            isStart={start && start.x === x && start.y === y}
+                            isEnd={end && end.x === x && end.y === y}
                             onClick={() => toggleSelectCell(x, y)}
                         >
                             {''}

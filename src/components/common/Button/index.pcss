@@ -18,12 +18,6 @@
     background-color: #f3f1ed;
   }
 
-  &_disabled {
-    border: none;
-    background-color: #e9ecef;
-    color: rgba(0, 0, 0, 0.6);
-  }
-
   &_highlight {
     border: none;
     background-color: var(--cell-color);
@@ -35,5 +29,13 @@
     &:active {
       background-color: var(--cell-color-active);
     }
+  }
+
+  &_disabled,
+  &_disabled:hover,
+  &_disabled:active {
+    border: none;
+    background-color: #e9ecef;
+    color: rgba(0, 0, 0, 0.6);
   }
 }

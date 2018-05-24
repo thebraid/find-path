@@ -14,12 +14,13 @@ export const createDependencies = (grid) => {
             // создаем хранилище всех путей из данной точки
             dep[value] = [];
 
-            // первый ряд, не заполняем верхние значения
+            // первый ряд, не заполняем верхние значения6
             if (i === 0) {
                 // крайний левый элемент
                 if (j === 0) {
+                    dep[value].push({to: grid[i][j+1], km: LD});   // справа
                     dep[value].push({to: grid[i+1][j], km: LD});   // снизу
-                    dep[value].push({to: grid[i+1][j-1], km: DD}); // слева-снизу
+                    dep[value].push({to: grid[i+1][j+1], km: DD}); // справа-снизу
                     continue;
                 }
 

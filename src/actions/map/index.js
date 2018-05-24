@@ -3,7 +3,10 @@ import {
     DESELECT_CELL,
 
     ADD_NEW_ROW,
-    ADD_NEW_COLUMN
+    ADD_NEW_COLUMN,
+
+    SET_NEW_START,
+    SET_NEW_END
 } from 'Constants';
 
 import {
@@ -37,13 +40,13 @@ export const addNewRow = () => (dispatch, getState) => {
     const newW = getState().map.width;
 
     const { grid, coords } = createMap(newW, newH);
-    const dependences = createDependencies(grid);
+    const dependencies = createDependencies(grid);
 
     dispatch ({
         type: ADD_NEW_ROW,
         grid,
         coords,
-        dependences,
+        dependencies,
         height: newH
     });
 };
@@ -53,13 +56,32 @@ export const addNewColumn = () => (dispatch, getState) => {
     const newW = getState().map.width + 1;
 
     const { grid, coords } = createMap(newW, newH);
-    const dependences = createDependencies(grid);
+    const dependencies = createDependencies(grid);
 
     dispatch ({
         type: ADD_NEW_COLUMN,
         grid,
         coords,
-        dependences,
+        dependencies,
         width: newW
+    });
+};
+
+
+export const setNewStart = () => (dispatch, getState) => {
+    const { selectedSell } = getState().map;
+
+    dispatch ({
+        type: SET_NEW_START,
+        start: selectedSell
+    });
+};
+
+export const setNewEnd = () => (dispatch, getState) => {
+    const { selectedSell } = getState().map;
+
+    dispatch ({
+        type: SET_NEW_END,
+        end: selectedSell
     });
 };
